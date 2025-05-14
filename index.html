@@ -6,19 +6,29 @@
 	<title>movieSearch</title>
 </head>
 <body>
-	<header>
-		<h1>movieSearch</h1>
-	</header>
 	<main>
+		<h1>movieSearch</h1>
 		<form id="searchForm">
 			<input type="text" id="searchInput" placeholder="Search for a movie..." required>
 			<button type="submit">Search</button>
 		</form>
-	</form>
+		<section class="search-results">
+			<template id="movie-card-template">
+				<div class="movie-card">
+					<img class="movie-poster" alt="Movie Poster">
+					<h3 class="movie-title"></h3>
+					<p class="movie-synopsis"></p>
+					<p class="movie-genre">Genre: <span></span></p>
+				</div>
+			</template>
+			<div class="movies-container">
+			</div>
+		</section>
 	</main>
 	<footer>
 		<p>&copy; 2025</p>
 		<a href="https://github.com/JonatasArao/mini-moviesearch" target="_blank" rel="noopener">Github</a>
 	</footer>
+	<script src="js/script.js"></script>
 </body>
 </html>
