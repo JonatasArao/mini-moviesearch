@@ -4,14 +4,11 @@ class MovieCard extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 		const template = document.createElement('template');
 		template.innerHTML = `
-			<article class="movie-card">
-				<img class="movie-poster" alt="Movie Poster">
-				<div class="movie-details">
-					<h3 class="movie-title"></h3>
-					<p class="movie-genre"></p>
-					<p class="movie-synopsis"></p>
-				</div>
-			</article>
+			<img class="movie-poster" alt="Movie Poster">				<div class="movie-details">
+				<h3 class="movie-title"></h3>
+				<p class="movie-genre"></p>
+				<p class="movie-synopsis"></p>
+			</div>
 		`;
 		this.shadowRoot.appendChild(template.content.cloneNode(true));
 		const linkElem = document.createElement('link');
@@ -80,7 +77,9 @@ function createMovieCard(movie) {
 		card.setAttribute('synopsis', movie.overview);
 	}
 	if (movie.genre_ids && Array.isArray(movie.genre_ids) && movie.genre_ids.length > 0) {
-		const genreNames = movie.genre_ids.map(id => genres[id]).filter(Boolean).join(', ');
+		const genreNames = movie.genre_ids.map(id => genres[id])
+			.filter(Boolean)
+			.join(', ');
 		if (genreNames) {
 			card.setAttribute('genre', genreNames);
 		}

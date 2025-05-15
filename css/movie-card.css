@@ -1,4 +1,4 @@
-.movie-card {
+:host {
 	display: flex;
 	cursor: default;
 }

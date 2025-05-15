@@ -16,29 +16,22 @@ async function searchMovies(query, page = 1) {
 document.getElementById('search-form').addEventListener('submit', function(e) {
 	e.preventDefault();
 	const searchQuery = document.getElementById('search-input').value;
-	const loading = document.getElementById('results-loading');
-	const resultsSection = document.getElementById('results-list');
-	loading.style.display = 'block';
-	resultsSection.innerHTML = '';
+	const searchResults = document.getElementById('search-results');
+	searchResults.renderer = (movie) => createMovieCard(movie);
+	searchResults.loading = true;
+	searchResults.error = '';
 
 	searchMovies(searchQuery)
 		.then(res => {
-			console.log(res);
 			if (res.total_results == 0) {
 				throw new Error('No results found');
 			}
-			res.results.forEach(movie => {
-				if (movie.title && movie.poster_path) {
-					const card = createMovieCard(movie);
-					resultsSection.appendChild(card);
-				}
-			});
+			searchResults.itens = res.results;
 		})
 		.catch((err => {
-			console.log(err);
-			resultsSection.innerHTML = `<p class="error-message">${err.message}</p>`;
+			searchResults.error = err.message;
 		}))
 		.finally(() => {
-			loading.style.display = 'none';
+			searchResults.loading = false;
 		});
 })
