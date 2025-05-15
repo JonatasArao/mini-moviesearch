@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>movieSearch</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<main>
@@ -13,21 +14,15 @@
 			<button type="submit">Search</button>
 		</form>
 		<section class="search-results"></section>
-		<template id="movie-card-template">
-			<div class="movie-card">
-				<img class="movie-poster" alt="Movie Poster">
-				<div class="movie-details">
-					<h3 class="movie-title"></h3>
-					<p class="movie-genre"></p>
-					<p class="movie-synopsis"></p>
-				</div>
-			</div>
-		</template>
+			<div id="results-loading">Loading...</div>
+			<div id="results-list"></div>
+		</section>
 	</main>
 	<footer>
 		<p>&copy; 2025</p>
 		<a href="https://github.com/JonatasArao/mini-moviesearch" target="_blank" rel="noopener">Github</a>
 	</footer>
+	<script src="js/movie-card.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
