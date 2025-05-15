@@ -8,22 +8,21 @@
 <body>
 	<main>
 		<h1>movieSearch</h1>
-		<form id="searchForm">
-			<input type="text" id="searchInput" placeholder="Search for a movie..." required>
+		<form id="search-form">
+			<input type="text" id="search-input" placeholder="Search for a movie..." required>
 			<button type="submit">Search</button>
 		</form>
-		<section class="search-results">
-			<template id="movie-card-template">
-				<div class="movie-card">
-					<img class="movie-poster" alt="Movie Poster">
+		<section class="search-results"></section>
+		<template id="movie-card-template">
+			<div class="movie-card">
+				<img class="movie-poster" alt="Movie Poster">
+				<div class="movie-details">
 					<h3 class="movie-title"></h3>
+					<p class="movie-genre"></p>
 					<p class="movie-synopsis"></p>
-					<p class="movie-genre">Genre: <span></span></p>
 				</div>
-			</template>
-			<div class="movies-container">
 			</div>
-		</section>
+		</template>
 	</main>
 	<footer>
 		<p>&copy; 2025</p>
