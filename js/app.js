@@ -1,5 +1,5 @@
 import { searchMovies } from './api/movieAPI.js';
-import './components/MovieList.js';
+import './components/movieList.js';
 
 document.getElementById('search-form').addEventListener('submit', function(e) {
 	e.preventDefault();
