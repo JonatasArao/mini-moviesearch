@@ -1,13 +1,14 @@
-class MovieCard extends HTMLElement {
+class movieCard extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
 		const template = document.createElement('template');
 		template.innerHTML = `
-			<img class="movie-poster" alt="Movie Poster">				<div class="movie-details">
-				<h3 class="movie-title"></h3>
-				<p class="movie-genre"></p>
-				<p class="movie-synopsis"></p>
+			<img class="poster" alt="Movie Poster">
+			<div class="details">
+				<h3 class="title"></h3>
+				<p class="genre"></p>
+				<p class="synopsis"></p>
 			</div>
 		`;
 		this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -30,16 +31,16 @@ class MovieCard extends HTMLElement {
 	}
 
 	render() {
-		const poster = this.shadowRoot.querySelector('.movie-poster');
-		const title = this.shadowRoot.querySelector('.movie-title');
-		const synopsis = this.shadowRoot.querySelector('.movie-synopsis');
-		const genre = this.shadowRoot.querySelector('.movie-genre');
+		const poster = this.shadowRoot.querySelector('.poster');
+		const title = this.shadowRoot.querySelector('.title');
+		const synopsis = this.shadowRoot.querySelector('.synopsis');
+		const genre = this.shadowRoot.querySelector('.genre');
 		const attr_img = this.getAttribute('img');
 		if (attr_img) {
 			poster.src = attr_img;
 			poster.alt = this.getAttribute('title') ? `Poster of ${this.getAttribute('title')}` : 'Movie poster';
 		} else if (poster) {
-			poster.src = "https://placehold.co/185x278?text=Poster+Unavailable";
+			poster.src = "img/poster_unavailable";
 			poster.alt = "Poster unavailable";
 		}
 		title.textContent = this.getAttribute('title') || '';
@@ -47,9 +48,9 @@ class MovieCard extends HTMLElement {
 		genre.textContent = this.getAttribute('genre') || '';
 	}
 }
-customElements.define('movie-card', MovieCard);
+customElements.define('movie-card', movieCard);
 
-function createMovieCard(movie) {
+export function createMovieItem(movie) {
 	const genres = {
 		28: "Action",
 		12: "Adventure",
