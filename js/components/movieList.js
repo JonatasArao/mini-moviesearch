@@ -1,38 +1,55 @@
-import { createMovieItem } from './movieCard.js';
+import './movieCard.js'
 
 class MovieList extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
-		const template = document.createElement('template');
-		template.innerHTML = `
-			<div id="loading" hidden>Loading...</div>
-			<div id="error"></div>
-			<div id="list">
-				<slot></slot>
-			</div>
-		`;
-		this.shadowRoot.appendChild(template.content.cloneNode(true));
 		const linkElem = document.createElement('link');
 		linkElem.setAttribute('rel', 'stylesheet');
 		linkElem.setAttribute('href', 'css/search-results.css');
 		this.shadowRoot.appendChild(linkElem);
+		this._contentContainer = document.createElement('div');
+		this._contentContainer.className = 'movie-list'
+		this.shadowRoot.appendChild(this._contentContainer);
+	}
+
+	connectedCallback() {
+		this._render();
 	}
 
 	set loading(val) {
-		this.shadowRoot.getElementById('loading').hidden = !val;
+		this._contentContainer.querySelector('#loading').hidden = !val;
+		if (val) {
+			this.movies = [];
+		}
 	}
 	set error(msg) {
-		this.shadowRoot.getElementById('error').textContent = msg || '';
+		this.movies = [];
+		this._contentContainer.querySelector('#error').textContent = msg || '';
 	}
 	set movies(list) {
-		const listElem = this.shadowRoot.getElementById('list');
-		listElem.innerHTML = '';
-		this.error = '';
-		list.forEach(item => {
-			const elem = createMovieItem(item);
-			listElem.appendChild(elem);
-		});
+		const listCards = this._contentContainer.querySelector('#list');
+		if (listCards) {
+			listCards.innerHTML = '';
+			if (list) {
+				list.forEach(movie => {
+					const card = document.createElement('movie-card');
+					card.movie = movie;
+					listCards.appendChild(card);
+				});
+			}
+		}
+	}
+
+	_render() {
+		this._contentContainer.innerHTML = '';
+		const template = document.createElement('template');
+		template.innerHTML = `
+			<div id="loading" hidden>Loading...</div>
+			<div id="error"></div>
+			<div id="list"></div>
+		`;
+		this._contentContainer.appendChild(template.content.cloneNode(true));
 	}
 }
 customElements.define('movie-list', MovieList);
