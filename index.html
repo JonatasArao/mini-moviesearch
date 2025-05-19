@@ -7,24 +7,24 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<header>
-		<h1 id="home-title">movieSearch</h1>
-		<form id="search-form">
-			<input type="text" id="search-input" placeholder="Search for a movie..." required>
-			<button type="submit">Search</button>
+	<header class="header">
+		<h1 id="home-title" class="home-title">movieSearch</h1>
+		<form id="search-form" class="search-form">
+			<input type="text" id="search-input" class="search-input" placeholder="Search for a movie..." required>
+			<button type="submit" class="search-button">Search</button>
 		</form>
 	</header>
-	<main>
-		<movie-list id="movie-list"></movie-list>
-		<nav id="pagination" aria-label="Search results pages" hidden>
-			<button id="prev-page" type="button" disabled>Prev</button>
-			<span id="page-info" aria-live="polite"></span>
-			<button id="next-page" type="button" disabled>Next</button>
+	<main class="main-content">
+		<movie-list id="movie-list" class="movie-list"></movie-list>
+		<nav id="pagination" class="pagination" aria-label="Search results pages" hidden>
+			<button id="prev-page" type="button" class="pagination-button" disabled>Prev</button>
+			<span id="page-info" class="page-info" aria-live="polite"></span>
+			<button id="next-page" type="button" class="pagination-button" disabled>Next</button>
 		</nav>
 	</main>
-	<footer>
-		<p>&copy; 2025</p>
-		<a href="https://github.com/JonatasArao/mini-moviesearch" target="_blank" rel="noopener">Github</a>
+	<footer class="footer">
+		<p class="copyright">&copy; 2025</p>
+		<a href="https://github.com/JonatasArao/mini-moviesearch" target="_blank" rel="noopener" class="github-link">Github</a>
 	</footer>
 	<script src="js/app.js" type="module"></script>
 </body>

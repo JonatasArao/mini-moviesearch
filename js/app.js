@@ -17,8 +17,11 @@ homeTitle.addEventListener('click', function(e) {
 	const movieList = document.getElementById('movie-list');
 	currentPage = 1;
 	movieList.movies = [];
+	movieList.loading = false;
+	movieList.error = '';
 	pagination.hidden = true;
 	pageInfo.textContent = '';
+	document.body.classList.remove('searching');
 });
 
 function updateMovieList(searchQuery, page, updateTotalPages = false) {
@@ -27,6 +30,7 @@ function updateMovieList(searchQuery, page, updateTotalPages = false) {
 	movieList.error = '';
 	currentSearchId++;
 	const searchId = currentSearchId;
+	document.body.classList.add('searching');
 	searchMovies(searchQuery, page)
 		.then(res => {
 			if (searchId !== currentSearchId) return;

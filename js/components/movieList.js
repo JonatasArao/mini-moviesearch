@@ -6,7 +6,7 @@ class MovieList extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 		const linkElem = document.createElement('link');
 		linkElem.setAttribute('rel', 'stylesheet');
-		linkElem.setAttribute('href', 'css/search-results.css');
+		linkElem.setAttribute('href', 'css/movie-list.css');
 		this.shadowRoot.appendChild(linkElem);
 		this._contentContainer = document.createElement('div');
 		this._contentContainer.className = 'movie-list'
@@ -45,9 +45,9 @@ class MovieList extends HTMLElement {
 		this._contentContainer.innerHTML = '';
 		const template = document.createElement('template');
 		template.innerHTML = `
-			<div id="loading" hidden>Loading...</div>
-			<div id="error"></div>
-			<div id="list"></div>
+			<div id="loading" class="loading" hidden>Loading...</div>
+			<div id="error" class="error"></div>
+			<div id="list" class="list"></div>
 		`;
 		this._contentContainer.appendChild(template.content.cloneNode(true));
 	}
