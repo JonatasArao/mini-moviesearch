@@ -50,7 +50,7 @@ class movieCard extends HTMLElement {
 			}
 		}
 		if (movie.poster_path) {
-			this.setAttribute('img', 'https://image.tmdb.org/t/p/w185' + movie.poster_path);
+			this.setAttribute('img', 'https://image.tmdb.org/t/p/w500' + movie.poster_path);
 		}
 	}
 
