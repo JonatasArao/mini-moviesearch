@@ -55,11 +55,30 @@ body {
 	opacity: 0.8;
 }
 
+.search-input::-webkit-input-placeholder {
+	color: #fff;
+	opacity: 0.8;
+}
+.search-input::-moz-placeholder {
+	color: #fff;
+	opacity: 0.8;
+}
+.search-input:-ms-input-placeholder {
+	color: #fff;
+	opacity: 0.8;
+}
+
+.search-input::-webkit-selection {
+	background: #4b5563;
+	color: #fff;
+}
+
 .search-button {
 	border-radius: 0.5rem;
 	padding: 0.4rem;
 	border: none;
 	background-color: #e0e7ef;
+	color: #000;
 	cursor: pointer;
 }
 

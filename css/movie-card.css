@@ -13,6 +13,7 @@
 	height: 10rem;
 	object-fit: cover;
 	display: block;
+	-webkit-border-radius: 1.5rem 1.5rem 0 0;
 	border-radius: 1.5rem 1.5rem 0 0;
 	background: #1a1a1a;
 }
@@ -32,8 +33,12 @@
 
 .overview {
 	display: -webkit-box;
+	display: -ms-flexbox;
+	display: box;
 	-webkit-line-clamp: 5;
+	line-clamp: 5;
 	-webkit-box-orient: vertical;
+	box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -48,6 +53,7 @@
 		height: auto;
 		object-fit: cover;
 		display: block;
+		-webkit-border-radius: 1.5rem 0 0 1.5rem;
 		border-radius: 1.5rem 0 0 1.5rem;
 		background: #1a1a1a;
 	}
